@@ -1,0 +1,55 @@
+body {
+    font-family: Verdana, Geneva, Tahoma, Verdana, sans-serif;
+    background: #fff;
+    padding: 20px;
+}
+.grid{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+.card {
+    background: #efefef;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.imageContainer{
+    width:100%;
+
+
+}
+
+
+.imageContainer img{
+    width:100%;
+    height:15rem;
+    display:block;
+    object-position: center;
+
+}
+
+
+.infoContainer{
+    padding:30px;
+}
+
+h2 { margin:0 0 6px; }
+.type { color:#555; font-size:14px; margin-bottom:10px; }
+p { margin:0; }
+
+
+.badge-type{
+    margin-top: 1rem;
+    text-align:center;
+    background:dodgerblue; color: #fff;
+    width: 25%;
+    height: 20px;
+    border-radius: 8px;
+
+}
+

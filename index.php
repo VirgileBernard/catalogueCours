@@ -17,44 +17,34 @@ foreach ($types as $t) {
 <head>
     <meta charset="UTF-8">
     <title>Liste des cours</title>
-    <style>
-        body { font-family: Arial; background:#f5f5f5; padding:20px; }
-        .card {
-            background:white;
-            padding:15px;
-            margin-bottom:15px;
-            border-radius:8px;
-            box-shadow:0 2px 5px rgba(0,0,0,0.1);
-            display:flex;
-            gap:20px;
-            align-items:center;
-        }
-        img {
-            width:120px;
-            height:auto;
-            border-radius:5px;
-        }
-        h2 { margin:0; }
-        .type { color:#555; font-size:14px; }
-    </style>
+    <link rel="stylesheet" href="style.css">
+
 </head>
 <body>
 
 <h1>Liste des cours</h1>
+<div class = "grid">
 
 <?php foreach ($cours as $c): ?>
     <div class="card">
+        <div class = "imageContainer">
         <img src="images/<?= $c->getImage() ?>" alt="<?= $c->getLibelle() ?>">
+        </div>
         
-        <div>
-            <h2><?= $c->getLibelle() ?></h2>
+        <div class="infoContainer">
+<!--            <h2>--><?php //= $c->getLibelle() ?><!--</h2>-->
             <div class="type">
-                Type : <strong><?= $typesMap[$c->getIdType()] ?></strong>
+                <strong><?= $typesMap[$c->getIdType()] ?></strong>
             </div>
             <p><?= $c->getDescription() ?></p>
+            <!-- Badge en bas -->
+         <div class="badge-type">
+             <?= $typesMap[$c->getIdType()] ?>
+              </div>
         </div>
     </div>
 <?php endforeach; ?>
+</div>
 
 </body>
 </html>
