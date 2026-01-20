@@ -11,6 +11,15 @@ $typesMap = [];
 foreach ($types as $t) {
     $typesMap[$t->getIdType()] = $t->getLibelle();
 }
+
+$idType = $_POST['id_type'] ?? 'all';
+
+if ($idType === 'all') {
+    $cours = CoursDAO::findAll();
+} else {
+    $cours = CoursDAO::findByType($idType);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -23,7 +32,21 @@ foreach ($types as $t) {
 <body>
 
 <h1>Liste des cours</h1>
-<div class = "grid">
+
+<form action="" method="post">
+    <select name="id_type" id="" onchange="this.form.submit()">
+        <option value="all">Tous les types</option>
+        <?php foreach ($types as $t): ?>
+            <option value="<?= $t->getIdType() ?>"
+                <?= (isset($_POST['id_type']) && $_POST['id_type'] == $t->getIdType()) ? 'selected' : '' ?>>
+                <?= $t->getLibelle() ?>
+            </option>
+        <?php endforeach; ?>
+        </select>
+</form>
+
+
+<div class = "coursContainer">
 
 <?php foreach ($cours as $c): ?>
     <div class="card">
@@ -36,7 +59,9 @@ foreach ($types as $t) {
             <div class="type">
                 <strong><?= $typesMap[$c->getIdType()] ?></strong>
             </div>
+            <div class="description">
             <p><?= $c->getDescription() ?></p>
+            </div>
             <!-- Badge en bas -->
          <div class="badge-type">
              <?= $typesMap[$c->getIdType()] ?>
